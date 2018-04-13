@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pmo.dashboard.dao.EmployeeMapper" >
+  <resultMap id="BaseResultMap" type="com.pmo.dashboard.entity.Employee" >
+    <id column="EMPLOYEE_ID" property="employeeId" jdbcType="VARCHAR" />
+    <result column="HSBC_STAFF_ID" property="hsbcStaffId" jdbcType="VARCHAR" />
+    <result column="STAFF_NAME" property="staffName" jdbcType="VARCHAR" />
+    <result column="LN" property="ln" jdbcType="VARCHAR" />
+    <result column="STAFF_REGION" property="staffRegion" jdbcType="VARCHAR" />
+    <result column="STAFF_LOCATION" property="staffLocation" jdbcType="VARCHAR" />
+    <result column="LOCATION_TYPE" property="locationType" jdbcType="VARCHAR" />
+    <result column="ONSHORE_OR_OFFSHORE" property="onshoreOrOffshore" jdbcType="VARCHAR" />
+    <result column="SOW" property="sow" jdbcType="VARCHAR" />
+    <result column="SOW_EXPIRED_DATE" property="sowExpiredDate" jdbcType="DATE" />
+    <result column="STAFF_CATEGORY" property="staffCategory" jdbcType="VARCHAR" />
+    <result column="ENGAGEMENT_TYPE" property="engagementType" jdbcType="VARCHAR" />
+    <result column="HSBC_DOJ" property="hsbcDoj" jdbcType="DATE" />
+    <result column="GRADUATION_DATE" property="graduationDate" jdbcType="DATE" />
+    <result column="BILL_CURRENCY" property="billCurrency" jdbcType="VARCHAR" />
+    <result column="BILL_RATE" property="billRate" jdbcType="VARCHAR" />
+    <result column="RESOURCE_STATUS" property="resourceStatus" jdbcType="VARCHAR" />
+    <result column="MENTION_LWD" property="mentionLwd" jdbcType="VARCHAR" />
+    <result column="REASON_FOR_TERMINATION" property="reasonForTermination" jdbcType="VARCHAR" />
+    <result column="E_HR" property="eHr" jdbcType="VARCHAR" />
+    <result column="HSBC_SUBDEPT_ID" property="hsbcSubdeptId" jdbcType="VARCHAR" />
+    <result column="SKILL" property="skill" jdbcType="VARCHAR" />
+    <result column="ROLE" property="role" jdbcType="VARCHAR" />
+    <result column="CS_SUBDEPT_ID" property="csSubdeptId" jdbcType="VARCHAR" />
+    <result column="LOB" property="lob" jdbcType="VARCHAR" />
+    <result column="INTERVIERW_STATUS" property="intervierwStatus" jdbcType="VARCHAR" />
+    <result column="HSBC_MANAGER" property="hsbcManager" jdbcType="VARCHAR" />
+    <result column="HSBC_PROJECT_NAME" property="hsbcProjectName" jdbcType="VARCHAR" />
+    <result column="RM_USER_ID" property="rmUserId" jdbcType="VARCHAR" />
+    <result column="Email" property="email" jdbcType="VARCHAR" />
+    <result column="GB_GF" property="gbGf" jdbcType="VARCHAR" />
+    <result column="ENTRY_DATE" property="entryDate" jdbcType="DATE" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="CHSOFTI_PRO_NUMBER" property="chsoftiProNumber" jdbcType="VARCHAR" />
+    <result column="CHSOFTI_PRO_STARTDATE" property="chsoftiProStartdate" jdbcType="TIMESTAMP" />
+    <result column="CHSOFTI_PRO_NAME" property="chsoftiProName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    EMPLOYEE_ID, HSBC_STAFF_ID, STAFF_NAME, LN, STAFF_REGION, STAFF_LOCATION, LOCATION_TYPE, 
+    ONSHORE_OR_OFFSHORE, SOW, SOW_EXPIRED_DATE, STAFF_CATEGORY, ENGAGEMENT_TYPE, HSBC_DOJ, 
+    GRADUATION_DATE, BILL_CURRENCY, BILL_RATE, RESOURCE_STATUS, MENTION_LWD, REASON_FOR_TERMINATION, 
+    E_HR, HSBC_SUBDEPT_ID, SKILL, ROLE, CS_SUBDEPT_ID, LOB, INTERVIERW_STATUS, HSBC_MANAGER, 
+    HSBC_PROJECT_NAME, RM_USER_ID, Email, GB_GF, ENTRY_DATE, CREATE_TIME, UPDATE_TIME, 
+    CHSOFTI_PRO_NUMBER, CHSOFTI_PRO_STARTDATE, CHSOFTI_PRO_NAME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_employee
+    where EMPLOYEE_ID = #{employeeId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_employee
+    where EMPLOYEE_ID = #{employeeId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.pmo.dashboard.entity.Employee" >
+    insert into t_employee (EMPLOYEE_ID, HSBC_STAFF_ID, STAFF_NAME, 
+      LN, STAFF_REGION, STAFF_LOCATION, 
+      LOCATION_TYPE, ONSHORE_OR_OFFSHORE, SOW, 
+      SOW_EXPIRED_DATE, STAFF_CATEGORY, ENGAGEMENT_TYPE, 
+      HSBC_DOJ, GRADUATION_DATE, BILL_CURRENCY, 
+      BILL_RATE, RESOURCE_STATUS, MENTION_LWD, 
+      REASON_FOR_TERMINATION, E_HR, HSBC_SUBDEPT_ID, 
+      SKILL, ROLE, CS_SUBDEPT_ID, 
+      LOB, INTERVIERW_STATUS, HSBC_MANAGER, 
+      HSBC_PROJECT_NAME, RM_USER_ID, Email, 
+      GB_GF, ENTRY_DATE, CREATE_TIME, 
+      UPDATE_TIME, CHSOFTI_PRO_NUMBER, CHSOFTI_PRO_STARTDATE, 
+      CHSOFTI_PRO_NAME)
+    values (#{employeeId,jdbcType=VARCHAR}, #{hsbcStaffId,jdbcType=VARCHAR}, #{staffName,jdbcType=VARCHAR}, 
+      #{ln,jdbcType=VARCHAR}, #{staffRegion,jdbcType=VARCHAR}, #{staffLocation,jdbcType=VARCHAR}, 
+      #{locationType,jdbcType=VARCHAR}, #{onshoreOrOffshore,jdbcType=VARCHAR}, #{sow,jdbcType=VARCHAR}, 
+      #{sowExpiredDate,jdbcType=DATE}, #{staffCategory,jdbcType=VARCHAR}, #{engagementType,jdbcType=VARCHAR}, 
+      #{hsbcDoj,jdbcType=DATE}, #{graduationDate,jdbcType=DATE}, #{billCurrency,jdbcType=VARCHAR}, 
+      #{billRate,jdbcType=VARCHAR}, #{resourceStatus,jdbcType=VARCHAR}, #{mentionLwd,jdbcType=VARCHAR}, 
+      #{reasonForTermination,jdbcType=VARCHAR}, #{eHr,jdbcType=VARCHAR}, #{hsbcSubdeptId,jdbcType=VARCHAR}, 
+      #{skill,jdbcType=VARCHAR}, #{role,jdbcType=VARCHAR}, #{csSubdeptId,jdbcType=VARCHAR}, 
+      #{lob,jdbcType=VARCHAR}, #{intervierwStatus,jdbcType=VARCHAR}, #{hsbcManager,jdbcType=VARCHAR}, 
+      #{hsbcProjectName,jdbcType=VARCHAR}, #{rmUserId,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{gbGf,jdbcType=VARCHAR}, #{entryDate,jdbcType=DATE}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{chsoftiProNumber,jdbcType=VARCHAR}, #{chsoftiProStartdate,jdbcType=TIMESTAMP}, 
+      #{chsoftiProName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pmo.dashboard.entity.Employee" >
+    insert into t_employee
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="employeeId != null" >
+        EMPLOYEE_ID,
+      </if>
+      <if test="hsbcStaffId != null" >
+        HSBC_STAFF_ID,
+      </if>
+      <if test="staffName != null" >
+        STAFF_NAME,
+      </if>
+      <if test="ln != null" >
+        LN,
+      </if>
+      <if test="staffRegion != null" >
+        STAFF_REGION,
+      </if>
+      <if test="staffLocation != null" >
+        STAFF_LOCATION,
+      </if>
+      <if test="locationType != null" >
+        LOCATION_TYPE,
+      </if>
+      <if test="onshoreOrOffshore != null" >
+        ONSHORE_OR_OFFSHORE,
+      </if>
+      <if test="sow != null" >
+        SOW,
+      </if>
+      <if test="sowExpiredDate != null" >
+        SOW_EXPIRED_DATE,
+      </if>
+      <if test="staffCategory != null" >
+        STAFF_CATEGORY,
+      </if>
+      <if test="engagementType != null" >
+        ENGAGEMENT_TYPE,
+      </if>
+      <if test="hsbcDoj != null" >
+        HSBC_DOJ,
+      </if>
+      <if test="graduationDate != null" >
+        GRADUATION_DATE,
+      </if>
+      <if test="billCurrency != null" >
+        BILL_CURRENCY,
+      </if>
+      <if test="billRate != null" >
+        BILL_RATE,
+      </if>
+      <if test="resourceStatus != null" >
+        RESOURCE_STATUS,
+      </if>
+      <if test="mentionLwd != null" >
+        MENTION_LWD,
+      </if>
+      <if test="reasonForTermination != null" >
+        REASON_FOR_TERMINATION,
+      </if>
+      <if test="eHr != null" >
+        E_HR,
+      </if>
+      <if test="hsbcSubdeptId != null" >
+        HSBC_SUBDEPT_ID,
+      </if>
+      <if test="skill != null" >
+        SKILL,
+      </if>
+      <if test="role != null" >
+        ROLE,
+      </if>
+      <if test="csSubdeptId != null" >
+        CS_SUBDEPT_ID,
+      </if>
+      <if test="lob != null" >
+        LOB,
+      </if>
+      <if test="intervierwStatus != null" >
+        INTERVIERW_STATUS,
+      </if>
+      <if test="hsbcManager != null" >
+        HSBC_MANAGER,
+      </if>
+      <if test="hsbcProjectName != null" >
+        HSBC_PROJECT_NAME,
+      </if>
+      <if test="rmUserId != null" >
+        RM_USER_ID,
+      </if>
+      <if test="email != null" >
+        Email,
+      </if>
+      <if test="gbGf != null" >
+        GB_GF,
+      </if>
+      <if test="entryDate != null" >
+        ENTRY_DATE,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="chsoftiProNumber != null" >
+        CHSOFTI_PRO_NUMBER,
+      </if>
+      <if test="chsoftiProStartdate != null" >
+        CHSOFTI_PRO_STARTDATE,
+      </if>
+      <if test="chsoftiProName != null" >
+        CHSOFTI_PRO_NAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="employeeId != null" >
+        #{employeeId,jdbcType=VARCHAR},
+      </if>
+      <if test="hsbcStaffId != null" >
+        #{hsbcStaffId,jdbcType=VARCHAR},
+      </if>
+      <if test="staffName != null" >
+        #{staffName,jdbcType=VARCHAR},
+      </if>
+      <if test="ln != null" >
+        #{ln,jdbcType=VARCHAR},
+      </if>
+      <if test="staffRegion != null" >
+        #{staffRegion,jdbcType=VARCHAR},
+      </if>
+      <if test="staffLocation != null" >
+        #{staffLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="locationType != null" >
+        #{locationType,jdbcType=VARCHAR},
+      </if>
+      <if test="onshoreOrOffshore != null" >
+        #{onshoreOrOffshore,jdbcType=VARCHAR},
+      </if>
+      <if test="sow != null" >
+        #{sow,jdbcType=VARCHAR},
+      </if>
+      <if test="sowExpiredDate != null" >
+        #{sowExpiredDate,jdbcType=DATE},
+      </if>
+      <if test="staffCategory != null" >
+        #{staffCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="engagementType != null" >
+        #{engagementType,jdbcType=VARCHAR},
+      </if>
+      <if test="hsbcDoj != null" >
+        #{hsbcDoj,jdbcType=DATE},
+      </if>
+      <if test="graduationDate != null" >
+        #{graduationDate,jdbcType=DATE},
+      </if>
+      <if test="billCurrency != null" >
+        #{billCurrency,jdbcType=VARCHAR},
+      </if>
+      <if test="billRate != null" >
+        #{billRate,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceStatus != null" >
+        #{resourceStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="mentionLwd != null" >
+        #{mentionLwd,jdbcType=VARCHAR},
+      </if>
+      <if test="reasonForTermination != null" >
+        #{reasonForTermination,jdbcType=VARCHAR},
+      </if>
+      <if test="eHr != null" >
+        #{eHr,jdbcType=VARCHAR},
+      </if>
+      <if test="hsbcSubdeptId != null" >
+        #{hsbcSubdeptId,jdbcType=VARCHAR},
+      </if>
+      <if test="skill != null" >
+        #{skill,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null" >
+        #{role,jdbcType=VARCHAR},
+      </if>
+      <if test="csSubdeptId != null" >
+        #{csSubdeptId,jdbcType=VARCHAR},
+      </if>
+      <if test="lob != null" >
+        #{lob,jdbcType=VARCHAR},
+      </if>
+      <if test="intervierwStatus != null" >
+        #{intervierwStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="hsbcManager != null" >
+        #{hsbcManager,jdbcType=VARCHAR},
+      </if>
+      <if test="hsbcProjectName != null" >
+        #{hsbcProjectName,jdbcType=VARCHAR},
+      </if>
+      <if test="rmUserId != null" >
+        #{rmUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="gbGf != null" >
+        #{gbGf,jdbcType=VARCHAR},
+      </if>
+      <if test="entryDate != null" >
+        #{entryDate,jdbcType=DATE},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chsoftiProNumber != null" >
+        #{chsoftiProNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="chsoftiProStartdate != null" >
+        #{chsoftiProStartdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chsoftiProName != null" >
+        #{chsoftiProName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pmo.dashboard.entity.Employee" >
+    update t_employee
+    <set >
+      <if test="hsbcStaffId != null" >
+        HSBC_STAFF_ID = #{hsbcStaffId,jdbcType=VARCHAR},
+      </if>
+      <if test="staffName != null" >
+        STAFF_NAME = #{staffName,jdbcType=VARCHAR},
+      </if>
+      <if test="ln != null" >
+        LN = #{ln,jdbcType=VARCHAR},
+      </if>
+      <if test="staffRegion != null" >
+        STAFF_REGION = #{staffRegion,jdbcType=VARCHAR},
+      </if>
+      <if test="staffLocation != null" >
+        STAFF_LOCATION = #{staffLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="locationType != null" >
+        LOCATION_TYPE = #{locationType,jdbcType=VARCHAR},
+      </if>
+      <if test="onshoreOrOffshore != null" >
+        ONSHORE_OR_OFFSHORE = #{onshoreOrOffshore,jdbcType=VARCHAR},
+      </if>
+      <if test="sow != null" >
+        SOW = #{sow,jdbcType=VARCHAR},
+      </if>
+      <if test="sowExpiredDate != null" >
+        SOW_EXPIRED_DATE = #{sowExpiredDate,jdbcType=DATE},
+      </if>
+      <if test="staffCategory != null" >
+        STAFF_CATEGORY = #{staffCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="engagementType != null" >
+        ENGAGEMENT_TYPE = #{engagementType,jdbcType=VARCHAR},
+      </if>
+      <if test="hsbcDoj != null" >
+        HSBC_DOJ = #{hsbcDoj,jdbcType=DATE},
+      </if>
+      <if test="graduationDate != null" >
+        GRADUATION_DATE = #{graduationDate,jdbcType=DATE},
+      </if>
+      <if test="billCurrency != null" >
+        BILL_CURRENCY = #{billCurrency,jdbcType=VARCHAR},
+      </if>
+      <if test="billRate != null" >
+        BILL_RATE = #{billRate,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceStatus != null" >
+        RESOURCE_STATUS = #{resourceStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="mentionLwd != null" >
+        MENTION_LWD = #{mentionLwd,jdbcType=VARCHAR},
+      </if>
+      <if test="reasonForTermination != null" >
+        REASON_FOR_TERMINATION = #{reasonForTermination,jdbcType=VARCHAR},
+      </if>
+      <if test="eHr != null" >
+        E_HR = #{eHr,jdbcType=VARCHAR},
+      </if>
+      <if test="hsbcSubdeptId != null" >
+        HSBC_SUBDEPT_ID = #{hsbcSubdeptId,jdbcType=VARCHAR},
+      </if>
+      <if test="skill != null" >
+        SKILL = #{skill,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null" >
+        ROLE = #{role,jdbcType=VARCHAR},
+      </if>
+      <if test="csSubdeptId != null" >
+        CS_SUBDEPT_ID = #{csSubdeptId,jdbcType=VARCHAR},
+      </if>
+      <if test="lob != null" >
+        LOB = #{lob,jdbcType=VARCHAR},
+      </if>
+      <if test="intervierwStatus != null" >
+        INTERVIERW_STATUS = #{intervierwStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="hsbcManager != null" >
+        HSBC_MANAGER = #{hsbcManager,jdbcType=VARCHAR},
+      </if>
+      <if test="hsbcProjectName != null" >
+        HSBC_PROJECT_NAME = #{hsbcProjectName,jdbcType=VARCHAR},
+      </if>
+      <if test="rmUserId != null" >
+        RM_USER_ID = #{rmUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        Email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="gbGf != null" >
+        GB_GF = #{gbGf,jdbcType=VARCHAR},
+      </if>
+      <if test="entryDate != null" >
+        ENTRY_DATE = #{entryDate,jdbcType=DATE},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chsoftiProNumber != null" >
+        CHSOFTI_PRO_NUMBER = #{chsoftiProNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="chsoftiProStartdate != null" >
+        CHSOFTI_PRO_STARTDATE = #{chsoftiProStartdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chsoftiProName != null" >
+        CHSOFTI_PRO_NAME = #{chsoftiProName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where EMPLOYEE_ID = #{employeeId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pmo.dashboard.entity.Employee" >
+    update t_employee
+    set HSBC_STAFF_ID = #{hsbcStaffId,jdbcType=VARCHAR},
+      STAFF_NAME = #{staffName,jdbcType=VARCHAR},
+      LN = #{ln,jdbcType=VARCHAR},
+      STAFF_REGION = #{staffRegion,jdbcType=VARCHAR},
+      STAFF_LOCATION = #{staffLocation,jdbcType=VARCHAR},
+      LOCATION_TYPE = #{locationType,jdbcType=VARCHAR},
+      ONSHORE_OR_OFFSHORE = #{onshoreOrOffshore,jdbcType=VARCHAR},
+      SOW = #{sow,jdbcType=VARCHAR},
+      SOW_EXPIRED_DATE = #{sowExpiredDate,jdbcType=DATE},
+      STAFF_CATEGORY = #{staffCategory,jdbcType=VARCHAR},
+      ENGAGEMENT_TYPE = #{engagementType,jdbcType=VARCHAR},
+      HSBC_DOJ = #{hsbcDoj,jdbcType=DATE},
+      GRADUATION_DATE = #{graduationDate,jdbcType=DATE},
+      BILL_CURRENCY = #{billCurrency,jdbcType=VARCHAR},
+      BILL_RATE = #{billRate,jdbcType=VARCHAR},
+      RESOURCE_STATUS = #{resourceStatus,jdbcType=VARCHAR},
+      MENTION_LWD = #{mentionLwd,jdbcType=VARCHAR},
+      REASON_FOR_TERMINATION = #{reasonForTermination,jdbcType=VARCHAR},
+      E_HR = #{eHr,jdbcType=VARCHAR},
+      HSBC_SUBDEPT_ID = #{hsbcSubdeptId,jdbcType=VARCHAR},
+      SKILL = #{skill,jdbcType=VARCHAR},
+      ROLE = #{role,jdbcType=VARCHAR},
+      CS_SUBDEPT_ID = #{csSubdeptId,jdbcType=VARCHAR},
+      LOB = #{lob,jdbcType=VARCHAR},
+      INTERVIERW_STATUS = #{intervierwStatus,jdbcType=VARCHAR},
+      HSBC_MANAGER = #{hsbcManager,jdbcType=VARCHAR},
+      HSBC_PROJECT_NAME = #{hsbcProjectName,jdbcType=VARCHAR},
+      RM_USER_ID = #{rmUserId,jdbcType=VARCHAR},
+      Email = #{email,jdbcType=VARCHAR},
+      GB_GF = #{gbGf,jdbcType=VARCHAR},
+      ENTRY_DATE = #{entryDate,jdbcType=DATE},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      CHSOFTI_PRO_NUMBER = #{chsoftiProNumber,jdbcType=VARCHAR},
+      CHSOFTI_PRO_STARTDATE = #{chsoftiProStartdate,jdbcType=TIMESTAMP},
+      CHSOFTI_PRO_NAME = #{chsoftiProName,jdbcType=VARCHAR}
+    where EMPLOYEE_ID = #{employeeId,jdbcType=VARCHAR}
+  </update>
+</mapper>
