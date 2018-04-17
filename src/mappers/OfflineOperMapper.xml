@@ -1,0 +1,1349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pmo.dashboard.dao.OfflineOperMapper">
+  <resultMap id="BaseResultMap" type="com.pmo.dashboard.entity.OfflineOper">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="E_HR" jdbcType="VARCHAR" property="eHr" />
+    <result column="STAFF_NAME" jdbcType="VARCHAR" property="staffName" />
+    <result column="EMPLOYEE_ID" jdbcType="VARCHAR" property="employeeId" />
+    <result column="CREATE_DATE" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="CREATE_UPDATE" jdbcType="TIMESTAMP" property="createUpdate" />
+    <result column="CS_SUBDEPT_ID" jdbcType="VARCHAR" property="csSubdeptId" />
+    <result column="RM_ID" jdbcType="VARCHAR" property="rmId" />
+    <result column="RM_NAME" jdbcType="VARCHAR" property="rmName" />
+    <result column="OPERATOR_ID" jdbcType="VARCHAR" property="operatorId" />
+    <result column="MONTH" jdbcType="VARCHAR" property="month" />
+    <result column="YEAR" jdbcType="VARCHAR" property="year" />
+    <result column="CHSOFTI_MSK_HOURS" jdbcType="DECIMAL" property="chsoftiMskHours" />
+    <result column="CHSOFTI_AW_HOURS" jdbcType="DECIMAL" property="chsoftiAwHours" />
+    <result column="CHSOFTI_IW_HOURS" jdbcType="DECIMAL" property="chsoftiIwHours" />
+    <result column="CHSOFTI_OT_HOURS" jdbcType="DECIMAL" property="chsoftiOtHours" />
+    <result column="CHSOFTI_TO_HOURS" jdbcType="DECIMAL" property="chsoftiToHours" />
+    <result column="CHSOFTI_APW_HOURS" jdbcType="DECIMAL" property="chsoftiApwHours" />
+    <result column="CHSOFTI_IFAW" jdbcType="DECIMAL" property="chsoftiIfaw" />
+    <result column="CHSOFTI_INVALID" jdbcType="DECIMAL" property="chsoftiInvalid" />
+    <result column="CHSOFTI_INF_OT" jdbcType="DECIMAL" property="chsoftiInfOt" />
+    <result column="CHSOFTI_INF_PT" jdbcType="DECIMAL" property="chsoftiInfPt" />
+    <result column="CHSOFTI_INF_AD" jdbcType="DECIMAL" property="chsoftiInfAd" />
+    <result column="CHSOFTI_INF_TRAVEL" jdbcType="DECIMAL" property="chsoftiInfTravel" />
+    <result column="CHSOFTI_INF_EQUIPMENT" jdbcType="DECIMAL" property="chsoftiInfEquipment" />
+    <result column="CHSOFTI_INF_SUB" jdbcType="DECIMAL" property="chsoftiInfSub" />
+    <result column="CHSOFTI_INF_TOTAL" jdbcType="DECIMAL" property="chsoftiInfTotal" />
+    <result column="CHSOFTI_INF_CURRENT" jdbcType="DECIMAL" property="chsoftiInfCurrent" />
+    <result column="CHSOFTI_EFFECTIVE_NR" jdbcType="DECIMAL" property="chsoftiEffectiveNr" />
+    <result column="CHSOFTI_EFFECTIVE_ST" jdbcType="DECIMAL" property="chsoftiEffectiveSt" />
+    <result column="CHSOFTI_INVALID_ST" jdbcType="DECIMAL" property="chsoftiInvalidSt" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.pmo.dashboard.entity.OfflineOper">
+    <result column="REMARK" jdbcType="LONGVARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, E_HR, STAFF_NAME, EMPLOYEE_ID, CREATE_DATE, CREATE_UPDATE, CS_SUBDEPT_ID, RM_ID, 
+    RM_NAME, OPERATOR_ID, MONTH, YEAR, CHSOFTI_MSK_HOURS, CHSOFTI_AW_HOURS, CHSOFTI_IW_HOURS, 
+    CHSOFTI_OT_HOURS, CHSOFTI_TO_HOURS, CHSOFTI_APW_HOURS, CHSOFTI_IFAW, CHSOFTI_INVALID, 
+    CHSOFTI_INF_OT, CHSOFTI_INF_PT, CHSOFTI_INF_AD, CHSOFTI_INF_TRAVEL, CHSOFTI_INF_EQUIPMENT, 
+    CHSOFTI_INF_SUB, CHSOFTI_INF_TOTAL, CHSOFTI_INF_CURRENT, CHSOFTI_EFFECTIVE_NR, CHSOFTI_EFFECTIVE_ST, 
+    CHSOFTI_INVALID_ST
+  </sql>
+  <sql id="Blob_Column_List">
+    REMARK
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_offline_oper
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_offline_oper
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.pmo.dashboard.entity.OfflineOper">
+    insert into t_offline_oper (ID, E_HR, STAFF_NAME, 
+      EMPLOYEE_ID, CREATE_DATE, CREATE_UPDATE, 
+      CS_SUBDEPT_ID, RM_ID, RM_NAME, 
+      OPERATOR_ID, MONTH, YEAR, 
+      CHSOFTI_MSK_HOURS, CHSOFTI_AW_HOURS, CHSOFTI_IW_HOURS, 
+      CHSOFTI_OT_HOURS, CHSOFTI_TO_HOURS, CHSOFTI_APW_HOURS, 
+      CHSOFTI_IFAW, CHSOFTI_INVALID, CHSOFTI_INF_OT, 
+      CHSOFTI_INF_PT, CHSOFTI_INF_AD, CHSOFTI_INF_TRAVEL, 
+      CHSOFTI_INF_EQUIPMENT, CHSOFTI_INF_SUB, CHSOFTI_INF_TOTAL, 
+      CHSOFTI_INF_CURRENT, CHSOFTI_EFFECTIVE_NR, 
+      CHSOFTI_EFFECTIVE_ST, CHSOFTI_INVALID_ST, REMARK
+      )
+    values (#{id,jdbcType=VARCHAR}, #{eHr,jdbcType=VARCHAR}, #{staffName,jdbcType=VARCHAR}, 
+      #{employeeId,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{createUpdate,jdbcType=TIMESTAMP}, 
+      #{csSubdeptId,jdbcType=VARCHAR}, #{rmId,jdbcType=VARCHAR}, #{rmName,jdbcType=VARCHAR}, 
+      #{operatorId,jdbcType=VARCHAR}, #{month,jdbcType=VARCHAR}, #{year,jdbcType=VARCHAR}, 
+      #{chsoftiMskHours,jdbcType=DECIMAL}, #{chsoftiAwHours,jdbcType=DECIMAL}, #{chsoftiIwHours,jdbcType=DECIMAL}, 
+      #{chsoftiOtHours,jdbcType=DECIMAL}, #{chsoftiToHours,jdbcType=DECIMAL}, #{chsoftiApwHours,jdbcType=DECIMAL}, 
+      #{chsoftiIfaw,jdbcType=DECIMAL}, #{chsoftiInvalid,jdbcType=DECIMAL}, #{chsoftiInfOt,jdbcType=DECIMAL}, 
+      #{chsoftiInfPt,jdbcType=DECIMAL}, #{chsoftiInfAd,jdbcType=DECIMAL}, #{chsoftiInfTravel,jdbcType=DECIMAL}, 
+      #{chsoftiInfEquipment,jdbcType=DECIMAL}, #{chsoftiInfSub,jdbcType=DECIMAL}, #{chsoftiInfTotal,jdbcType=DECIMAL}, 
+      #{chsoftiInfCurrent,jdbcType=DECIMAL}, #{chsoftiEffectiveNr,jdbcType=DECIMAL}, 
+      #{chsoftiEffectiveSt,jdbcType=DECIMAL}, #{chsoftiInvalidSt,jdbcType=DECIMAL}, #{remark,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pmo.dashboard.entity.OfflineOper">
+    insert into t_offline_oper
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="eHr != null">
+        E_HR,
+      </if>
+      <if test="staffName != null">
+        STAFF_NAME,
+      </if>
+      <if test="employeeId != null">
+        EMPLOYEE_ID,
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE,
+      </if>
+      <if test="createUpdate != null">
+        CREATE_UPDATE,
+      </if>
+      <if test="csSubdeptId != null">
+        CS_SUBDEPT_ID,
+      </if>
+      <if test="rmId != null">
+        RM_ID,
+      </if>
+      <if test="rmName != null">
+        RM_NAME,
+      </if>
+      <if test="operatorId != null">
+        OPERATOR_ID,
+      </if>
+      <if test="month != null">
+        MONTH,
+      </if>
+      <if test="year != null">
+        YEAR,
+      </if>
+      <if test="chsoftiMskHours != null">
+        CHSOFTI_MSK_HOURS,
+      </if>
+      <if test="chsoftiAwHours != null">
+        CHSOFTI_AW_HOURS,
+      </if>
+      <if test="chsoftiIwHours != null">
+        CHSOFTI_IW_HOURS,
+      </if>
+      <if test="chsoftiOtHours != null">
+        CHSOFTI_OT_HOURS,
+      </if>
+      <if test="chsoftiToHours != null">
+        CHSOFTI_TO_HOURS,
+      </if>
+      <if test="chsoftiApwHours != null">
+        CHSOFTI_APW_HOURS,
+      </if>
+      <if test="chsoftiIfaw != null">
+        CHSOFTI_IFAW,
+      </if>
+      <if test="chsoftiInvalid != null">
+        CHSOFTI_INVALID,
+      </if>
+      <if test="chsoftiInfOt != null">
+        CHSOFTI_INF_OT,
+      </if>
+      <if test="chsoftiInfPt != null">
+        CHSOFTI_INF_PT,
+      </if>
+      <if test="chsoftiInfAd != null">
+        CHSOFTI_INF_AD,
+      </if>
+      <if test="chsoftiInfTravel != null">
+        CHSOFTI_INF_TRAVEL,
+      </if>
+      <if test="chsoftiInfEquipment != null">
+        CHSOFTI_INF_EQUIPMENT,
+      </if>
+      <if test="chsoftiInfSub != null">
+        CHSOFTI_INF_SUB,
+      </if>
+      <if test="chsoftiInfTotal != null">
+        CHSOFTI_INF_TOTAL,
+      </if>
+      <if test="chsoftiInfCurrent != null">
+        CHSOFTI_INF_CURRENT,
+      </if>
+      <if test="chsoftiEffectiveNr != null">
+        CHSOFTI_EFFECTIVE_NR,
+      </if>
+      <if test="chsoftiEffectiveSt != null">
+        CHSOFTI_EFFECTIVE_ST,
+      </if>
+      <if test="chsoftiInvalidSt != null">
+        CHSOFTI_INVALID_ST,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="eHr != null">
+        #{eHr,jdbcType=VARCHAR},
+      </if>
+      <if test="staffName != null">
+        #{staffName,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeId != null">
+        #{employeeId,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUpdate != null">
+        #{createUpdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="csSubdeptId != null">
+        #{csSubdeptId,jdbcType=VARCHAR},
+      </if>
+      <if test="rmId != null">
+        #{rmId,jdbcType=VARCHAR},
+      </if>
+      <if test="rmName != null">
+        #{rmName,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null">
+        #{operatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="month != null">
+        #{month,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null">
+        #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="chsoftiMskHours != null">
+        #{chsoftiMskHours,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiAwHours != null">
+        #{chsoftiAwHours,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiIwHours != null">
+        #{chsoftiIwHours,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiOtHours != null">
+        #{chsoftiOtHours,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiToHours != null">
+        #{chsoftiToHours,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiApwHours != null">
+        #{chsoftiApwHours,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiIfaw != null">
+        #{chsoftiIfaw,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInvalid != null">
+        #{chsoftiInvalid,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfOt != null">
+        #{chsoftiInfOt,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfPt != null">
+        #{chsoftiInfPt,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfAd != null">
+        #{chsoftiInfAd,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfTravel != null">
+        #{chsoftiInfTravel,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfEquipment != null">
+        #{chsoftiInfEquipment,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfSub != null">
+        #{chsoftiInfSub,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfTotal != null">
+        #{chsoftiInfTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfCurrent != null">
+        #{chsoftiInfCurrent,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiEffectiveNr != null">
+        #{chsoftiEffectiveNr,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiEffectiveSt != null">
+        #{chsoftiEffectiveSt,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInvalidSt != null">
+        #{chsoftiInvalidSt,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pmo.dashboard.entity.OfflineOper">
+    update t_offline_oper
+    <set>
+      <if test="eHr != null">
+        E_HR = #{eHr,jdbcType=VARCHAR},
+      </if>
+      <if test="staffName != null">
+        STAFF_NAME = #{staffName,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeId != null">
+        EMPLOYEE_ID = #{employeeId,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUpdate != null">
+        CREATE_UPDATE = #{createUpdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="csSubdeptId != null">
+        CS_SUBDEPT_ID = #{csSubdeptId,jdbcType=VARCHAR},
+      </if>
+      <if test="rmId != null">
+        RM_ID = #{rmId,jdbcType=VARCHAR},
+      </if>
+      <if test="rmName != null">
+        RM_NAME = #{rmName,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null">
+        OPERATOR_ID = #{operatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="month != null">
+        MONTH = #{month,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null">
+        YEAR = #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="chsoftiMskHours != null">
+        CHSOFTI_MSK_HOURS = #{chsoftiMskHours,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiAwHours != null">
+        CHSOFTI_AW_HOURS = #{chsoftiAwHours,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiIwHours != null">
+        CHSOFTI_IW_HOURS = #{chsoftiIwHours,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiOtHours != null">
+        CHSOFTI_OT_HOURS = #{chsoftiOtHours,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiToHours != null">
+        CHSOFTI_TO_HOURS = #{chsoftiToHours,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiApwHours != null">
+        CHSOFTI_APW_HOURS = #{chsoftiApwHours,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiIfaw != null">
+        CHSOFTI_IFAW = #{chsoftiIfaw,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInvalid != null">
+        CHSOFTI_INVALID = #{chsoftiInvalid,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfOt != null">
+        CHSOFTI_INF_OT = #{chsoftiInfOt,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfPt != null">
+        CHSOFTI_INF_PT = #{chsoftiInfPt,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfAd != null">
+        CHSOFTI_INF_AD = #{chsoftiInfAd,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfTravel != null">
+        CHSOFTI_INF_TRAVEL = #{chsoftiInfTravel,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfEquipment != null">
+        CHSOFTI_INF_EQUIPMENT = #{chsoftiInfEquipment,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfSub != null">
+        CHSOFTI_INF_SUB = #{chsoftiInfSub,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfTotal != null">
+        CHSOFTI_INF_TOTAL = #{chsoftiInfTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfCurrent != null">
+        CHSOFTI_INF_CURRENT = #{chsoftiInfCurrent,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiEffectiveNr != null">
+        CHSOFTI_EFFECTIVE_NR = #{chsoftiEffectiveNr,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiEffectiveSt != null">
+        CHSOFTI_EFFECTIVE_ST = #{chsoftiEffectiveSt,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInvalidSt != null">
+        CHSOFTI_INVALID_ST = #{chsoftiInvalidSt,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.pmo.dashboard.entity.OfflineOper">
+    update t_offline_oper
+    set E_HR = #{eHr,jdbcType=VARCHAR},
+      STAFF_NAME = #{staffName,jdbcType=VARCHAR},
+      EMPLOYEE_ID = #{employeeId,jdbcType=VARCHAR},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      CREATE_UPDATE = #{createUpdate,jdbcType=TIMESTAMP},
+      CS_SUBDEPT_ID = #{csSubdeptId,jdbcType=VARCHAR},
+      RM_ID = #{rmId,jdbcType=VARCHAR},
+      RM_NAME = #{rmName,jdbcType=VARCHAR},
+      OPERATOR_ID = #{operatorId,jdbcType=VARCHAR},
+      MONTH = #{month,jdbcType=VARCHAR},
+      YEAR = #{year,jdbcType=VARCHAR},
+      CHSOFTI_MSK_HOURS = #{chsoftiMskHours,jdbcType=DECIMAL},
+      CHSOFTI_AW_HOURS = #{chsoftiAwHours,jdbcType=DECIMAL},
+      CHSOFTI_IW_HOURS = #{chsoftiIwHours,jdbcType=DECIMAL},
+      CHSOFTI_OT_HOURS = #{chsoftiOtHours,jdbcType=DECIMAL},
+      CHSOFTI_TO_HOURS = #{chsoftiToHours,jdbcType=DECIMAL},
+      CHSOFTI_APW_HOURS = #{chsoftiApwHours,jdbcType=DECIMAL},
+      CHSOFTI_IFAW = #{chsoftiIfaw,jdbcType=DECIMAL},
+      CHSOFTI_INVALID = #{chsoftiInvalid,jdbcType=DECIMAL},
+      CHSOFTI_INF_OT = #{chsoftiInfOt,jdbcType=DECIMAL},
+      CHSOFTI_INF_PT = #{chsoftiInfPt,jdbcType=DECIMAL},
+      CHSOFTI_INF_AD = #{chsoftiInfAd,jdbcType=DECIMAL},
+      CHSOFTI_INF_TRAVEL = #{chsoftiInfTravel,jdbcType=DECIMAL},
+      CHSOFTI_INF_EQUIPMENT = #{chsoftiInfEquipment,jdbcType=DECIMAL},
+      CHSOFTI_INF_SUB = #{chsoftiInfSub,jdbcType=DECIMAL},
+      CHSOFTI_INF_TOTAL = #{chsoftiInfTotal,jdbcType=DECIMAL},
+      CHSOFTI_INF_CURRENT = #{chsoftiInfCurrent,jdbcType=DECIMAL},
+      CHSOFTI_EFFECTIVE_NR = #{chsoftiEffectiveNr,jdbcType=DECIMAL},
+      CHSOFTI_EFFECTIVE_ST = #{chsoftiEffectiveSt,jdbcType=DECIMAL},
+      CHSOFTI_INVALID_ST = #{chsoftiInvalidSt,jdbcType=DECIMAL},
+      REMARK = #{remark,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pmo.dashboard.entity.OfflineOper">
+    update t_offline_oper
+    set E_HR = #{eHr,jdbcType=VARCHAR},
+      STAFF_NAME = #{staffName,jdbcType=VARCHAR},
+      EMPLOYEE_ID = #{employeeId,jdbcType=VARCHAR},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      CREATE_UPDATE = #{createUpdate,jdbcType=TIMESTAMP},
+      CS_SUBDEPT_ID = #{csSubdeptId,jdbcType=VARCHAR},
+      RM_ID = #{rmId,jdbcType=VARCHAR},
+      RM_NAME = #{rmName,jdbcType=VARCHAR},
+      OPERATOR_ID = #{operatorId,jdbcType=VARCHAR},
+      MONTH = #{month,jdbcType=VARCHAR},
+      YEAR = #{year,jdbcType=VARCHAR},
+      CHSOFTI_MSK_HOURS = #{chsoftiMskHours,jdbcType=DECIMAL},
+      CHSOFTI_AW_HOURS = #{chsoftiAwHours,jdbcType=DECIMAL},
+      CHSOFTI_IW_HOURS = #{chsoftiIwHours,jdbcType=DECIMAL},
+      CHSOFTI_OT_HOURS = #{chsoftiOtHours,jdbcType=DECIMAL},
+      CHSOFTI_TO_HOURS = #{chsoftiToHours,jdbcType=DECIMAL},
+      CHSOFTI_APW_HOURS = #{chsoftiApwHours,jdbcType=DECIMAL},
+      CHSOFTI_IFAW = #{chsoftiIfaw,jdbcType=DECIMAL},
+      CHSOFTI_INVALID = #{chsoftiInvalid,jdbcType=DECIMAL},
+      CHSOFTI_INF_OT = #{chsoftiInfOt,jdbcType=DECIMAL},
+      CHSOFTI_INF_PT = #{chsoftiInfPt,jdbcType=DECIMAL},
+      CHSOFTI_INF_AD = #{chsoftiInfAd,jdbcType=DECIMAL},
+      CHSOFTI_INF_TRAVEL = #{chsoftiInfTravel,jdbcType=DECIMAL},
+      CHSOFTI_INF_EQUIPMENT = #{chsoftiInfEquipment,jdbcType=DECIMAL},
+      CHSOFTI_INF_SUB = #{chsoftiInfSub,jdbcType=DECIMAL},
+      CHSOFTI_INF_TOTAL = #{chsoftiInfTotal,jdbcType=DECIMAL},
+      CHSOFTI_INF_CURRENT = #{chsoftiInfCurrent,jdbcType=DECIMAL},
+      CHSOFTI_EFFECTIVE_NR = #{chsoftiEffectiveNr,jdbcType=DECIMAL},
+      CHSOFTI_EFFECTIVE_ST = #{chsoftiEffectiveSt,jdbcType=DECIMAL},
+      CHSOFTI_INVALID_ST = #{chsoftiInvalidSt,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.pmo.dashboard.entity.OfflineOper">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="E_HR" jdbcType="VARCHAR" property="eHr" />
+    <result column="STAFF_NAME" jdbcType="VARCHAR" property="staffName" />
+    <result column="EMPLOYEE_ID" jdbcType="VARCHAR" property="employeeId" />
+    <result column="CREATE_DATE" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="CREATE_UPDATE" jdbcType="TIMESTAMP" property="createUpdate" />
+    <result column="CS_SUBDEPT_ID" jdbcType="VARCHAR" property="csSubdeptId" />
+    <result column="RM_ID" jdbcType="VARCHAR" property="rmId" />
+    <result column="RM_NAME" jdbcType="VARCHAR" property="rmName" />
+    <result column="OPERATOR_ID" jdbcType="VARCHAR" property="operatorId" />
+    <result column="MONTH" jdbcType="VARCHAR" property="month" />
+    <result column="YEAR" jdbcType="VARCHAR" property="year" />
+    <result column="CHSOFTI_MSK_HOURS" jdbcType="DECIMAL" property="chsoftiMskHours" />
+    <result column="CHSOFTI_AW_HOURS" jdbcType="DECIMAL" property="chsoftiAwHours" />
+    <result column="CHSOFTI_IW_HOURS" jdbcType="DECIMAL" property="chsoftiIwHours" />
+    <result column="CHSOFTI_OT_HOURS" jdbcType="DECIMAL" property="chsoftiOtHours" />
+    <result column="CHSOFTI_TO_HOURS" jdbcType="DECIMAL" property="chsoftiToHours" />
+    <result column="CHSOFTI_APW_HOURS" jdbcType="DECIMAL" property="chsoftiApwHours" />
+    <result column="CHSOFTI_IFAW" jdbcType="DECIMAL" property="chsoftiIfaw" />
+    <result column="CHSOFTI_INVALID" jdbcType="DECIMAL" property="chsoftiInvalid" />
+    <result column="CHSOFTI_INF_OT" jdbcType="DECIMAL" property="chsoftiInfOt" />
+    <result column="CHSOFTI_INF_PT" jdbcType="DECIMAL" property="chsoftiInfPt" />
+    <result column="CHSOFTI_INF_AD" jdbcType="DECIMAL" property="chsoftiInfAd" />
+    <result column="CHSOFTI_INF_TRAVEL" jdbcType="DECIMAL" property="chsoftiInfTravel" />
+    <result column="CHSOFTI_INF_EQUIPMENT" jdbcType="DECIMAL" property="chsoftiInfEquipment" />
+    <result column="CHSOFTI_INF_SUB" jdbcType="DECIMAL" property="chsoftiInfSub" />
+    <result column="CHSOFTI_INF_TOTAL" jdbcType="DECIMAL" property="chsoftiInfTotal" />
+    <result column="CHSOFTI_INF_CURRENT" jdbcType="DECIMAL" property="chsoftiInfCurrent" />
+    <result column="CHSOFTI_EFFECTIVE_NR" jdbcType="DECIMAL" property="chsoftiEffectiveNr" />
+    <result column="CHSOFTI_EFFECTIVE_ST" jdbcType="DECIMAL" property="chsoftiEffectiveSt" />
+    <result column="CHSOFTI_INVALID_ST" jdbcType="DECIMAL" property="chsoftiInvalidSt" />
+    
+    <result column="REMARK" jdbcType="LONGVARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, E_HR, STAFF_NAME, EMPLOYEE_ID, CREATE_DATE, CREATE_UPDATE, CS_SUBDEPT_ID, RM_ID, 
+    RM_NAME, OPERATOR_ID, MONTH, YEAR, CHSOFTI_MSK_HOURS, CHSOFTI_AW_HOURS, CHSOFTI_IW_HOURS, 
+    CHSOFTI_OT_HOURS, CHSOFTI_TO_HOURS, CHSOFTI_APW_HOURS, CHSOFTI_IFAW, CHSOFTI_INVALID, 
+    CHSOFTI_INF_OT, CHSOFTI_INF_PT, CHSOFTI_INF_AD, CHSOFTI_INF_TRAVEL, CHSOFTI_INF_EQUIPMENT, 
+    CHSOFTI_INF_SUB, CHSOFTI_INF_TOTAL, CHSOFTI_INF_CURRENT, CHSOFTI_EFFECTIVE_NR, CHSOFTI_EFFECTIVE_ST, 
+    CHSOFTI_INVALID_ST,REMARK
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    from t_offline_oper
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_offline_oper
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.pmo.dashboard.entity.OfflineOper">
+    insert into t_offline_oper (ID, E_HR, STAFF_NAME, 
+      EMPLOYEE_ID, CREATE_DATE, CREATE_UPDATE, 
+      CS_SUBDEPT_ID, RM_ID, RM_NAME, 
+      OPERATOR_ID, MONTH, YEAR, 
+      CHSOFTI_MSK_HOURS, CHSOFTI_AW_HOURS, CHSOFTI_IW_HOURS, 
+      CHSOFTI_OT_HOURS, CHSOFTI_TO_HOURS, CHSOFTI_APW_HOURS, 
+      CHSOFTI_IFAW, CHSOFTI_INVALID, CHSOFTI_INF_OT, 
+      CHSOFTI_INF_PT, CHSOFTI_INF_AD, CHSOFTI_INF_TRAVEL, 
+      CHSOFTI_INF_EQUIPMENT, CHSOFTI_INF_SUB, CHSOFTI_INF_TOTAL, 
+      CHSOFTI_INF_CURRENT, CHSOFTI_EFFECTIVE_NR, 
+      CHSOFTI_EFFECTIVE_ST, CHSOFTI_INVALID_ST, REMARK
+      )
+    values (#{id,jdbcType=VARCHAR}, #{eHr,jdbcType=VARCHAR}, #{staffName,jdbcType=VARCHAR}, 
+      #{employeeId,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{createUpdate,jdbcType=TIMESTAMP}, 
+      #{csSubdeptId,jdbcType=VARCHAR}, #{rmId,jdbcType=VARCHAR}, #{rmName,jdbcType=VARCHAR}, 
+      #{operatorId,jdbcType=VARCHAR}, #{month,jdbcType=VARCHAR}, #{year,jdbcType=VARCHAR}, 
+      #{chsoftiMskHours,jdbcType=DECIMAL}, #{chsoftiAwHours,jdbcType=DECIMAL}, #{chsoftiIwHours,jdbcType=DECIMAL}, 
+      #{chsoftiOtHours,jdbcType=DECIMAL}, #{chsoftiToHours,jdbcType=DECIMAL}, #{chsoftiApwHours,jdbcType=DECIMAL}, 
+      #{chsoftiIfaw,jdbcType=DECIMAL}, #{chsoftiInvalid,jdbcType=DECIMAL}, #{chsoftiInfOt,jdbcType=DECIMAL}, 
+      #{chsoftiInfPt,jdbcType=DECIMAL}, #{chsoftiInfAd,jdbcType=DECIMAL}, #{chsoftiInfTravel,jdbcType=DECIMAL}, 
+      #{chsoftiInfEquipment,jdbcType=DECIMAL}, #{chsoftiInfSub,jdbcType=DECIMAL}, #{chsoftiInfTotal,jdbcType=DECIMAL}, 
+      #{chsoftiInfCurrent,jdbcType=DECIMAL}, #{chsoftiEffectiveNr,jdbcType=DECIMAL}, 
+      #{chsoftiEffectiveSt,jdbcType=DECIMAL}, #{chsoftiInvalidSt,jdbcType=DECIMAL}, #{remark,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pmo.dashboard.entity.OfflineOper">
+    insert into t_offline_oper
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="eHr != null">
+        E_HR,
+      </if>
+      <if test="staffName != null">
+        STAFF_NAME,
+      </if>
+      <if test="employeeId != null">
+        EMPLOYEE_ID,
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE,
+      </if>
+      <if test="createUpdate != null">
+        CREATE_UPDATE,
+      </if>
+      <if test="csSubdeptId != null">
+        CS_SUBDEPT_ID,
+      </if>
+      <if test="rmId != null">
+        RM_ID,
+      </if>
+      <if test="rmName != null">
+        RM_NAME,
+      </if>
+      <if test="operatorId != null">
+        OPERATOR_ID,
+      </if>
+      <if test="month != null">
+        MONTH,
+      </if>
+      <if test="year != null">
+        YEAR,
+      </if>
+      <if test="chsoftiMskHours != null">
+        CHSOFTI_MSK_HOURS,
+      </if>
+      <if test="chsoftiAwHours != null">
+        CHSOFTI_AW_HOURS,
+      </if>
+      <if test="chsoftiIwHours != null">
+        CHSOFTI_IW_HOURS,
+      </if>
+      <if test="chsoftiOtHours != null">
+        CHSOFTI_OT_HOURS,
+      </if>
+      <if test="chsoftiToHours != null">
+        CHSOFTI_TO_HOURS,
+      </if>
+      <if test="chsoftiApwHours != null">
+        CHSOFTI_APW_HOURS,
+      </if>
+      <if test="chsoftiIfaw != null">
+        CHSOFTI_IFAW,
+      </if>
+      <if test="chsoftiInvalid != null">
+        CHSOFTI_INVALID,
+      </if>
+      <if test="chsoftiInfOt != null">
+        CHSOFTI_INF_OT,
+      </if>
+      <if test="chsoftiInfPt != null">
+        CHSOFTI_INF_PT,
+      </if>
+      <if test="chsoftiInfAd != null">
+        CHSOFTI_INF_AD,
+      </if>
+      <if test="chsoftiInfTravel != null">
+        CHSOFTI_INF_TRAVEL,
+      </if>
+      <if test="chsoftiInfEquipment != null">
+        CHSOFTI_INF_EQUIPMENT,
+      </if>
+      <if test="chsoftiInfSub != null">
+        CHSOFTI_INF_SUB,
+      </if>
+      <if test="chsoftiInfTotal != null">
+        CHSOFTI_INF_TOTAL,
+      </if>
+      <if test="chsoftiInfCurrent != null">
+        CHSOFTI_INF_CURRENT,
+      </if>
+      <if test="chsoftiEffectiveNr != null">
+        CHSOFTI_EFFECTIVE_NR,
+      </if>
+      <if test="chsoftiEffectiveSt != null">
+        CHSOFTI_EFFECTIVE_ST,
+      </if>
+      <if test="chsoftiInvalidSt != null">
+        CHSOFTI_INVALID_ST,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="eHr != null">
+        #{eHr,jdbcType=VARCHAR},
+      </if>
+      <if test="staffName != null">
+        #{staffName,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeId != null">
+        #{employeeId,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUpdate != null">
+        #{createUpdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="csSubdeptId != null">
+        #{csSubdeptId,jdbcType=VARCHAR},
+      </if>
+      <if test="rmId != null">
+        #{rmId,jdbcType=VARCHAR},
+      </if>
+      <if test="rmName != null">
+        #{rmName,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null">
+        #{operatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="month != null">
+        #{month,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null">
+        #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="chsoftiMskHours != null">
+        #{chsoftiMskHours,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiAwHours != null">
+        #{chsoftiAwHours,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiIwHours != null">
+        #{chsoftiIwHours,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiOtHours != null">
+        #{chsoftiOtHours,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiToHours != null">
+        #{chsoftiToHours,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiApwHours != null">
+        #{chsoftiApwHours,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiIfaw != null">
+        #{chsoftiIfaw,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInvalid != null">
+        #{chsoftiInvalid,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfOt != null">
+        #{chsoftiInfOt,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfPt != null">
+        #{chsoftiInfPt,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfAd != null">
+        #{chsoftiInfAd,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfTravel != null">
+        #{chsoftiInfTravel,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfEquipment != null">
+        #{chsoftiInfEquipment,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfSub != null">
+        #{chsoftiInfSub,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfTotal != null">
+        #{chsoftiInfTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfCurrent != null">
+        #{chsoftiInfCurrent,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiEffectiveNr != null">
+        #{chsoftiEffectiveNr,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiEffectiveSt != null">
+        #{chsoftiEffectiveSt,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInvalidSt != null">
+        #{chsoftiInvalidSt,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pmo.dashboard.entity.OfflineOper">
+    update t_offline_oper
+    <set>
+      <if test="eHr != null">
+        E_HR = #{eHr,jdbcType=VARCHAR},
+      </if>
+      <if test="staffName != null">
+        STAFF_NAME = #{staffName,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeId != null">
+        EMPLOYEE_ID = #{employeeId,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUpdate != null">
+        CREATE_UPDATE = #{createUpdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="csSubdeptId != null">
+        CS_SUBDEPT_ID = #{csSubdeptId,jdbcType=VARCHAR},
+      </if>
+      <if test="rmId != null">
+        RM_ID = #{rmId,jdbcType=VARCHAR},
+      </if>
+      <if test="rmName != null">
+        RM_NAME = #{rmName,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null">
+        OPERATOR_ID = #{operatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="month != null">
+        MONTH = #{month,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null">
+        YEAR = #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="chsoftiMskHours != null">
+        CHSOFTI_MSK_HOURS = #{chsoftiMskHours,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiAwHours != null">
+        CHSOFTI_AW_HOURS = #{chsoftiAwHours,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiIwHours != null">
+        CHSOFTI_IW_HOURS = #{chsoftiIwHours,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiOtHours != null">
+        CHSOFTI_OT_HOURS = #{chsoftiOtHours,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiToHours != null">
+        CHSOFTI_TO_HOURS = #{chsoftiToHours,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiApwHours != null">
+        CHSOFTI_APW_HOURS = #{chsoftiApwHours,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiIfaw != null">
+        CHSOFTI_IFAW = #{chsoftiIfaw,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInvalid != null">
+        CHSOFTI_INVALID = #{chsoftiInvalid,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfOt != null">
+        CHSOFTI_INF_OT = #{chsoftiInfOt,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfPt != null">
+        CHSOFTI_INF_PT = #{chsoftiInfPt,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfAd != null">
+        CHSOFTI_INF_AD = #{chsoftiInfAd,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfTravel != null">
+        CHSOFTI_INF_TRAVEL = #{chsoftiInfTravel,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfEquipment != null">
+        CHSOFTI_INF_EQUIPMENT = #{chsoftiInfEquipment,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfSub != null">
+        CHSOFTI_INF_SUB = #{chsoftiInfSub,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfTotal != null">
+        CHSOFTI_INF_TOTAL = #{chsoftiInfTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfCurrent != null">
+        CHSOFTI_INF_CURRENT = #{chsoftiInfCurrent,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiEffectiveNr != null">
+        CHSOFTI_EFFECTIVE_NR = #{chsoftiEffectiveNr,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiEffectiveSt != null">
+        CHSOFTI_EFFECTIVE_ST = #{chsoftiEffectiveSt,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInvalidSt != null">
+        CHSOFTI_INVALID_ST = #{chsoftiInvalidSt,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.pmo.dashboard.entity.OfflineOper">
+    update t_offline_oper
+    set E_HR = #{eHr,jdbcType=VARCHAR},
+      STAFF_NAME = #{staffName,jdbcType=VARCHAR},
+      EMPLOYEE_ID = #{employeeId,jdbcType=VARCHAR},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      CREATE_UPDATE = #{createUpdate,jdbcType=TIMESTAMP},
+      CS_SUBDEPT_ID = #{csSubdeptId,jdbcType=VARCHAR},
+      RM_ID = #{rmId,jdbcType=VARCHAR},
+      RM_NAME = #{rmName,jdbcType=VARCHAR},
+      OPERATOR_ID = #{operatorId,jdbcType=VARCHAR},
+      MONTH = #{month,jdbcType=VARCHAR},
+      YEAR = #{year,jdbcType=VARCHAR},
+      CHSOFTI_MSK_HOURS = #{chsoftiMskHours,jdbcType=DECIMAL},
+      CHSOFTI_AW_HOURS = #{chsoftiAwHours,jdbcType=DECIMAL},
+      CHSOFTI_IW_HOURS = #{chsoftiIwHours,jdbcType=DECIMAL},
+      CHSOFTI_OT_HOURS = #{chsoftiOtHours,jdbcType=DECIMAL},
+      CHSOFTI_TO_HOURS = #{chsoftiToHours,jdbcType=DECIMAL},
+      CHSOFTI_APW_HOURS = #{chsoftiApwHours,jdbcType=DECIMAL},
+      CHSOFTI_IFAW = #{chsoftiIfaw,jdbcType=DECIMAL},
+      CHSOFTI_INVALID = #{chsoftiInvalid,jdbcType=DECIMAL},
+      CHSOFTI_INF_OT = #{chsoftiInfOt,jdbcType=DECIMAL},
+      CHSOFTI_INF_PT = #{chsoftiInfPt,jdbcType=DECIMAL},
+      CHSOFTI_INF_AD = #{chsoftiInfAd,jdbcType=DECIMAL},
+      CHSOFTI_INF_TRAVEL = #{chsoftiInfTravel,jdbcType=DECIMAL},
+      CHSOFTI_INF_EQUIPMENT = #{chsoftiInfEquipment,jdbcType=DECIMAL},
+      CHSOFTI_INF_SUB = #{chsoftiInfSub,jdbcType=DECIMAL},
+      CHSOFTI_INF_TOTAL = #{chsoftiInfTotal,jdbcType=DECIMAL},
+      CHSOFTI_INF_CURRENT = #{chsoftiInfCurrent,jdbcType=DECIMAL},
+      CHSOFTI_EFFECTIVE_NR = #{chsoftiEffectiveNr,jdbcType=DECIMAL},
+      CHSOFTI_EFFECTIVE_ST = #{chsoftiEffectiveSt,jdbcType=DECIMAL},
+      CHSOFTI_INVALID_ST = #{chsoftiInvalidSt,jdbcType=DECIMAL},
+      REMARK = #{remark,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pmo.dashboard.entity.OfflineOper">
+    update t_offline_oper
+    set E_HR = #{eHr,jdbcType=VARCHAR},
+      STAFF_NAME = #{staffName,jdbcType=VARCHAR},
+      EMPLOYEE_ID = #{employeeId,jdbcType=VARCHAR},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      CREATE_UPDATE = #{createUpdate,jdbcType=TIMESTAMP},
+      CS_SUBDEPT_ID = #{csSubdeptId,jdbcType=VARCHAR},
+      RM_ID = #{rmId,jdbcType=VARCHAR},
+      RM_NAME = #{rmName,jdbcType=VARCHAR},
+      OPERATOR_ID = #{operatorId,jdbcType=VARCHAR},
+      MONTH = #{month,jdbcType=VARCHAR},
+      YEAR = #{year,jdbcType=VARCHAR},
+      CHSOFTI_MSK_HOURS = #{chsoftiMskHours,jdbcType=DECIMAL},
+      CHSOFTI_AW_HOURS = #{chsoftiAwHours,jdbcType=DECIMAL},
+      CHSOFTI_IW_HOURS = #{chsoftiIwHours,jdbcType=DECIMAL},
+      CHSOFTI_OT_HOURS = #{chsoftiOtHours,jdbcType=DECIMAL},
+      CHSOFTI_TO_HOURS = #{chsoftiToHours,jdbcType=DECIMAL},
+      CHSOFTI_APW_HOURS = #{chsoftiApwHours,jdbcType=DECIMAL},
+      CHSOFTI_IFAW = #{chsoftiIfaw,jdbcType=DECIMAL},
+      CHSOFTI_INVALID = #{chsoftiInvalid,jdbcType=DECIMAL},
+      CHSOFTI_INF_OT = #{chsoftiInfOt,jdbcType=DECIMAL},
+      CHSOFTI_INF_PT = #{chsoftiInfPt,jdbcType=DECIMAL},
+      CHSOFTI_INF_AD = #{chsoftiInfAd,jdbcType=DECIMAL},
+      CHSOFTI_INF_TRAVEL = #{chsoftiInfTravel,jdbcType=DECIMAL},
+      CHSOFTI_INF_EQUIPMENT = #{chsoftiInfEquipment,jdbcType=DECIMAL},
+      CHSOFTI_INF_SUB = #{chsoftiInfSub,jdbcType=DECIMAL},
+      CHSOFTI_INF_TOTAL = #{chsoftiInfTotal,jdbcType=DECIMAL},
+      CHSOFTI_INF_CURRENT = #{chsoftiInfCurrent,jdbcType=DECIMAL},
+      CHSOFTI_EFFECTIVE_NR = #{chsoftiEffectiveNr,jdbcType=DECIMAL},
+      CHSOFTI_EFFECTIVE_ST = #{chsoftiEffectiveSt,jdbcType=DECIMAL},
+      CHSOFTI_INVALID_ST = #{chsoftiInvalidSt,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.pmo.dashboard.entity.OfflineOper">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="E_HR" jdbcType="VARCHAR" property="eHr" />
+    <result column="STAFF_NAME" jdbcType="VARCHAR" property="staffName" />
+    <result column="EMPLOYEE_ID" jdbcType="VARCHAR" property="employeeId" />
+    <result column="CREATE_DATE" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="CREATE_UPDATE" jdbcType="TIMESTAMP" property="createUpdate" />
+    <result column="CS_SUBDEPT_ID" jdbcType="VARCHAR" property="csSubdeptId" />
+    <result column="RM_ID" jdbcType="VARCHAR" property="rmId" />
+    <result column="RM_NAME" jdbcType="VARCHAR" property="rmName" />
+    <result column="OPERATOR_ID" jdbcType="VARCHAR" property="operatorId" />
+    <result column="MONTH" jdbcType="TIMESTAMP" property="month" />
+    <result column="YEAR" jdbcType="VARCHAR" property="year" />
+    <result column="CHSOFTI_MSK_HOURS" jdbcType="DECIMAL" property="chsoftiMskHours" />
+    <result column="CHSOFTI_AW_HOURS" jdbcType="DECIMAL" property="chsoftiAwHours" />
+    <result column="CHSOFTI_IW_HOURS" jdbcType="DECIMAL" property="chsoftiIwHours" />
+    <result column="CHSOFTI_OT_HOURS" jdbcType="DECIMAL" property="chsoftiOtHours" />
+    <result column="CHSOFTI_TO_HOURS" jdbcType="DECIMAL" property="chsoftiToHours" />
+    <result column="CHSOFTI_APW_HOURS" jdbcType="DECIMAL" property="chsoftiApwHours" />
+    <result column="CHSOFTI_IFAW" jdbcType="DECIMAL" property="chsoftiIfaw" />
+    <result column="CHSOFTI_INVALID" jdbcType="DECIMAL" property="chsoftiInvalid" />
+    <result column="CHSOFTI_INF_OT" jdbcType="DECIMAL" property="chsoftiInfOt" />
+    <result column="CHSOFTI_INF_PT" jdbcType="DECIMAL" property="chsoftiInfPt" />
+    <result column="CHSOFTI_INF_AD" jdbcType="DECIMAL" property="chsoftiInfAd" />
+    <result column="CHSOFTI_INF_TRAVEL" jdbcType="DECIMAL" property="chsoftiInfTravel" />
+    <result column="CHSOFTI_INF_EQUIPMENT" jdbcType="DECIMAL" property="chsoftiInfEquipment" />
+    <result column="CHSOFTI_INF_SUB" jdbcType="DECIMAL" property="chsoftiInfSub" />
+    <result column="CHSOFTI_INF_TOTAL" jdbcType="DECIMAL" property="chsoftiInfTotal" />
+    <result column="CHSOFTI_INF_CURRENT" jdbcType="DECIMAL" property="chsoftiInfCurrent" />
+    <result column="CHSOFTI_EFFECTIVE_NR" jdbcType="DECIMAL" property="chsoftiEffectiveNr" />
+    <result column="CHSOFTI_EFFECTIVE_ST" jdbcType="DECIMAL" property="chsoftiEffectiveSt" />
+    <result column="CHSOFTI_INVALID_ST" jdbcType="DECIMAL" property="chsoftiInvalidSt" />
+    <result column="REMARK" jdbcType="LONGVARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, E_HR, STAFF_NAME, EMPLOYEE_ID, CREATE_DATE, CREATE_UPDATE, CS_SUBDEPT_ID, RM_ID, 
+    RM_NAME, OPERATOR_ID, MONTH, YEAR, CHSOFTI_MSK_HOURS, CHSOFTI_AW_HOURS, CHSOFTI_IW_HOURS, 
+    CHSOFTI_OT_HOURS, CHSOFTI_TO_HOURS, CHSOFTI_APW_HOURS, CHSOFTI_IFAW, CHSOFTI_INVALID, 
+    CHSOFTI_INF_OT, CHSOFTI_INF_PT, CHSOFTI_INF_AD, CHSOFTI_INF_TRAVEL, CHSOFTI_INF_EQUIPMENT, 
+    CHSOFTI_INF_SUB, CHSOFTI_INF_TOTAL, CHSOFTI_INF_CURRENT, CHSOFTI_EFFECTIVE_NR, CHSOFTI_EFFECTIVE_ST, 
+    CHSOFTI_INVALID_ST,REMARK
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_offline_oper
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_offline_oper
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.pmo.dashboard.entity.OfflineOper">
+    insert into t_offline_oper (ID, E_HR, STAFF_NAME, 
+      EMPLOYEE_ID, CREATE_DATE, CREATE_UPDATE, 
+      CS_SUBDEPT_ID, RM_ID, RM_NAME, 
+      OPERATOR_ID, MONTH, YEAR, 
+      CHSOFTI_MSK_HOURS, CHSOFTI_AW_HOURS, CHSOFTI_IW_HOURS, 
+      CHSOFTI_OT_HOURS, CHSOFTI_TO_HOURS, CHSOFTI_APW_HOURS, 
+      CHSOFTI_IFAW, CHSOFTI_INVALID, CHSOFTI_INF_OT, 
+      CHSOFTI_INF_PT, CHSOFTI_INF_AD, CHSOFTI_INF_TRAVEL, 
+      CHSOFTI_INF_EQUIPMENT, CHSOFTI_INF_SUB, CHSOFTI_INF_TOTAL, 
+      CHSOFTI_INF_CURRENT, CHSOFTI_EFFECTIVE_NR, 
+      CHSOFTI_EFFECTIVE_ST, CHSOFTI_INVALID_ST, REMARK
+      )
+    values (#{id,jdbcType=VARCHAR}, #{eHr,jdbcType=VARCHAR}, #{staffName,jdbcType=VARCHAR}, 
+      #{employeeId,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{createUpdate,jdbcType=TIMESTAMP}, 
+      #{csSubdeptId,jdbcType=VARCHAR}, #{rmId,jdbcType=VARCHAR}, #{rmName,jdbcType=VARCHAR}, 
+      #{operatorId,jdbcType=VARCHAR}, #{month,jdbcType=TIMESTAMP}, #{year,jdbcType=VARCHAR}, 
+      #{chsoftiMskHours,jdbcType=DECIMAL}, #{chsoftiAwHours,jdbcType=DECIMAL}, #{chsoftiIwHours,jdbcType=DECIMAL}, 
+      #{chsoftiOtHours,jdbcType=DECIMAL}, #{chsoftiToHours,jdbcType=DECIMAL}, #{chsoftiApwHours,jdbcType=DECIMAL}, 
+      #{chsoftiIfaw,jdbcType=DECIMAL}, #{chsoftiInvalid,jdbcType=DECIMAL}, #{chsoftiInfOt,jdbcType=DECIMAL}, 
+      #{chsoftiInfPt,jdbcType=DECIMAL}, #{chsoftiInfAd,jdbcType=DECIMAL}, #{chsoftiInfTravel,jdbcType=DECIMAL}, 
+      #{chsoftiInfEquipment,jdbcType=DECIMAL}, #{chsoftiInfSub,jdbcType=DECIMAL}, #{chsoftiInfTotal,jdbcType=DECIMAL}, 
+      #{chsoftiInfCurrent,jdbcType=DECIMAL}, #{chsoftiEffectiveNr,jdbcType=DECIMAL}, 
+      #{chsoftiEffectiveSt,jdbcType=DECIMAL}, #{chsoftiInvalidSt,jdbcType=DECIMAL}, #{remark,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pmo.dashboard.entity.OfflineOper">
+    insert into t_offline_oper
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="eHr != null">
+        E_HR,
+      </if>
+      <if test="staffName != null">
+        STAFF_NAME,
+      </if>
+      <if test="employeeId != null">
+        EMPLOYEE_ID,
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE,
+      </if>
+      <if test="createUpdate != null">
+        CREATE_UPDATE,
+      </if>
+      <if test="csSubdeptId != null">
+        CS_SUBDEPT_ID,
+      </if>
+      <if test="rmId != null">
+        RM_ID,
+      </if>
+      <if test="rmName != null">
+        RM_NAME,
+      </if>
+      <if test="operatorId != null">
+        OPERATOR_ID,
+      </if>
+      <if test="month != null">
+        MONTH,
+      </if>
+      <if test="year != null">
+        YEAR,
+      </if>
+      <if test="chsoftiMskHours != null">
+        CHSOFTI_MSK_HOURS,
+      </if>
+      <if test="chsoftiAwHours != null">
+        CHSOFTI_AW_HOURS,
+      </if>
+      <if test="chsoftiIwHours != null">
+        CHSOFTI_IW_HOURS,
+      </if>
+      <if test="chsoftiOtHours != null">
+        CHSOFTI_OT_HOURS,
+      </if>
+      <if test="chsoftiToHours != null">
+        CHSOFTI_TO_HOURS,
+      </if>
+      <if test="chsoftiApwHours != null">
+        CHSOFTI_APW_HOURS,
+      </if>
+      <if test="chsoftiIfaw != null">
+        CHSOFTI_IFAW,
+      </if>
+      <if test="chsoftiInvalid != null">
+        CHSOFTI_INVALID,
+      </if>
+      <if test="chsoftiInfOt != null">
+        CHSOFTI_INF_OT,
+      </if>
+      <if test="chsoftiInfPt != null">
+        CHSOFTI_INF_PT,
+      </if>
+      <if test="chsoftiInfAd != null">
+        CHSOFTI_INF_AD,
+      </if>
+      <if test="chsoftiInfTravel != null">
+        CHSOFTI_INF_TRAVEL,
+      </if>
+      <if test="chsoftiInfEquipment != null">
+        CHSOFTI_INF_EQUIPMENT,
+      </if>
+      <if test="chsoftiInfSub != null">
+        CHSOFTI_INF_SUB,
+      </if>
+      <if test="chsoftiInfTotal != null">
+        CHSOFTI_INF_TOTAL,
+      </if>
+      <if test="chsoftiInfCurrent != null">
+        CHSOFTI_INF_CURRENT,
+      </if>
+      <if test="chsoftiEffectiveNr != null">
+        CHSOFTI_EFFECTIVE_NR,
+      </if>
+      <if test="chsoftiEffectiveSt != null">
+        CHSOFTI_EFFECTIVE_ST,
+      </if>
+      <if test="chsoftiInvalidSt != null">
+        CHSOFTI_INVALID_ST,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="eHr != null">
+        #{eHr,jdbcType=VARCHAR},
+      </if>
+      <if test="staffName != null">
+        #{staffName,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeId != null">
+        #{employeeId,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUpdate != null">
+        #{createUpdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="csSubdeptId != null">
+        #{csSubdeptId,jdbcType=VARCHAR},
+      </if>
+      <if test="rmId != null">
+        #{rmId,jdbcType=VARCHAR},
+      </if>
+      <if test="rmName != null">
+        #{rmName,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null">
+        #{operatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="month != null">
+        #{month,jdbcType=TIMESTAMP},
+      </if>
+      <if test="year != null">
+        #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="chsoftiMskHours != null">
+        #{chsoftiMskHours,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiAwHours != null">
+        #{chsoftiAwHours,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiIwHours != null">
+        #{chsoftiIwHours,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiOtHours != null">
+        #{chsoftiOtHours,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiToHours != null">
+        #{chsoftiToHours,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiApwHours != null">
+        #{chsoftiApwHours,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiIfaw != null">
+        #{chsoftiIfaw,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInvalid != null">
+        #{chsoftiInvalid,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfOt != null">
+        #{chsoftiInfOt,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfPt != null">
+        #{chsoftiInfPt,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfAd != null">
+        #{chsoftiInfAd,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfTravel != null">
+        #{chsoftiInfTravel,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfEquipment != null">
+        #{chsoftiInfEquipment,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfSub != null">
+        #{chsoftiInfSub,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfTotal != null">
+        #{chsoftiInfTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfCurrent != null">
+        #{chsoftiInfCurrent,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiEffectiveNr != null">
+        #{chsoftiEffectiveNr,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiEffectiveSt != null">
+        #{chsoftiEffectiveSt,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInvalidSt != null">
+        #{chsoftiInvalidSt,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pmo.dashboard.entity.OfflineOper">
+    update t_offline_oper
+    <set>
+      <if test="eHr != null">
+        E_HR = #{eHr,jdbcType=VARCHAR},
+      </if>
+      <if test="staffName != null">
+        STAFF_NAME = #{staffName,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeId != null">
+        EMPLOYEE_ID = #{employeeId,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUpdate != null">
+        CREATE_UPDATE = #{createUpdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="csSubdeptId != null">
+        CS_SUBDEPT_ID = #{csSubdeptId,jdbcType=VARCHAR},
+      </if>
+      <if test="rmId != null">
+        RM_ID = #{rmId,jdbcType=VARCHAR},
+      </if>
+      <if test="rmName != null">
+        RM_NAME = #{rmName,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null">
+        OPERATOR_ID = #{operatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="month != null">
+        MONTH = #{month,jdbcType=TIMESTAMP},
+      </if>
+      <if test="year != null">
+        YEAR = #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="chsoftiMskHours != null">
+        CHSOFTI_MSK_HOURS = #{chsoftiMskHours,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiAwHours != null">
+        CHSOFTI_AW_HOURS = #{chsoftiAwHours,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiIwHours != null">
+        CHSOFTI_IW_HOURS = #{chsoftiIwHours,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiOtHours != null">
+        CHSOFTI_OT_HOURS = #{chsoftiOtHours,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiToHours != null">
+        CHSOFTI_TO_HOURS = #{chsoftiToHours,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiApwHours != null">
+        CHSOFTI_APW_HOURS = #{chsoftiApwHours,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiIfaw != null">
+        CHSOFTI_IFAW = #{chsoftiIfaw,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInvalid != null">
+        CHSOFTI_INVALID = #{chsoftiInvalid,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfOt != null">
+        CHSOFTI_INF_OT = #{chsoftiInfOt,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfPt != null">
+        CHSOFTI_INF_PT = #{chsoftiInfPt,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfAd != null">
+        CHSOFTI_INF_AD = #{chsoftiInfAd,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfTravel != null">
+        CHSOFTI_INF_TRAVEL = #{chsoftiInfTravel,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfEquipment != null">
+        CHSOFTI_INF_EQUIPMENT = #{chsoftiInfEquipment,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfSub != null">
+        CHSOFTI_INF_SUB = #{chsoftiInfSub,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfTotal != null">
+        CHSOFTI_INF_TOTAL = #{chsoftiInfTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInfCurrent != null">
+        CHSOFTI_INF_CURRENT = #{chsoftiInfCurrent,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiEffectiveNr != null">
+        CHSOFTI_EFFECTIVE_NR = #{chsoftiEffectiveNr,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiEffectiveSt != null">
+        CHSOFTI_EFFECTIVE_ST = #{chsoftiEffectiveSt,jdbcType=DECIMAL},
+      </if>
+      <if test="chsoftiInvalidSt != null">
+        CHSOFTI_INVALID_ST = #{chsoftiInvalidSt,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.pmo.dashboard.entity.OfflineOper">
+    update t_offline_oper
+    set E_HR = #{eHr,jdbcType=VARCHAR},
+      STAFF_NAME = #{staffName,jdbcType=VARCHAR},
+      EMPLOYEE_ID = #{employeeId,jdbcType=VARCHAR},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      CREATE_UPDATE = #{createUpdate,jdbcType=TIMESTAMP},
+      CS_SUBDEPT_ID = #{csSubdeptId,jdbcType=VARCHAR},
+      RM_ID = #{rmId,jdbcType=VARCHAR},
+      RM_NAME = #{rmName,jdbcType=VARCHAR},
+      OPERATOR_ID = #{operatorId,jdbcType=VARCHAR},
+      MONTH = #{month,jdbcType=TIMESTAMP},
+      YEAR = #{year,jdbcType=VARCHAR},
+      CHSOFTI_MSK_HOURS = #{chsoftiMskHours,jdbcType=DECIMAL},
+      CHSOFTI_AW_HOURS = #{chsoftiAwHours,jdbcType=DECIMAL},
+      CHSOFTI_IW_HOURS = #{chsoftiIwHours,jdbcType=DECIMAL},
+      CHSOFTI_OT_HOURS = #{chsoftiOtHours,jdbcType=DECIMAL},
+      CHSOFTI_TO_HOURS = #{chsoftiToHours,jdbcType=DECIMAL},
+      CHSOFTI_APW_HOURS = #{chsoftiApwHours,jdbcType=DECIMAL},
+      CHSOFTI_IFAW = #{chsoftiIfaw,jdbcType=DECIMAL},
+      CHSOFTI_INVALID = #{chsoftiInvalid,jdbcType=DECIMAL},
+      CHSOFTI_INF_OT = #{chsoftiInfOt,jdbcType=DECIMAL},
+      CHSOFTI_INF_PT = #{chsoftiInfPt,jdbcType=DECIMAL},
+      CHSOFTI_INF_AD = #{chsoftiInfAd,jdbcType=DECIMAL},
+      CHSOFTI_INF_TRAVEL = #{chsoftiInfTravel,jdbcType=DECIMAL},
+      CHSOFTI_INF_EQUIPMENT = #{chsoftiInfEquipment,jdbcType=DECIMAL},
+      CHSOFTI_INF_SUB = #{chsoftiInfSub,jdbcType=DECIMAL},
+      CHSOFTI_INF_TOTAL = #{chsoftiInfTotal,jdbcType=DECIMAL},
+      CHSOFTI_INF_CURRENT = #{chsoftiInfCurrent,jdbcType=DECIMAL},
+      CHSOFTI_EFFECTIVE_NR = #{chsoftiEffectiveNr,jdbcType=DECIMAL},
+      CHSOFTI_EFFECTIVE_ST = #{chsoftiEffectiveSt,jdbcType=DECIMAL},
+      CHSOFTI_INVALID_ST = #{chsoftiInvalidSt,jdbcType=DECIMAL},
+      REMARK = #{remark,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pmo.dashboard.entity.OfflineOper">
+    update t_offline_oper
+    set E_HR = #{eHr,jdbcType=VARCHAR},
+      STAFF_NAME = #{staffName,jdbcType=VARCHAR},
+      EMPLOYEE_ID = #{employeeId,jdbcType=VARCHAR},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      CREATE_UPDATE = #{createUpdate,jdbcType=TIMESTAMP},
+      CS_SUBDEPT_ID = #{csSubdeptId,jdbcType=VARCHAR},
+      RM_ID = #{rmId,jdbcType=VARCHAR},
+      RM_NAME = #{rmName,jdbcType=VARCHAR},
+      OPERATOR_ID = #{operatorId,jdbcType=VARCHAR},
+      MONTH = #{month,jdbcType=TIMESTAMP},
+      YEAR = #{year,jdbcType=VARCHAR},
+      CHSOFTI_MSK_HOURS = #{chsoftiMskHours,jdbcType=DECIMAL},
+      CHSOFTI_AW_HOURS = #{chsoftiAwHours,jdbcType=DECIMAL},
+      CHSOFTI_IW_HOURS = #{chsoftiIwHours,jdbcType=DECIMAL},
+      CHSOFTI_OT_HOURS = #{chsoftiOtHours,jdbcType=DECIMAL},
+      CHSOFTI_TO_HOURS = #{chsoftiToHours,jdbcType=DECIMAL},
+      CHSOFTI_APW_HOURS = #{chsoftiApwHours,jdbcType=DECIMAL},
+      CHSOFTI_IFAW = #{chsoftiIfaw,jdbcType=DECIMAL},
+      CHSOFTI_INVALID = #{chsoftiInvalid,jdbcType=DECIMAL},
+      CHSOFTI_INF_OT = #{chsoftiInfOt,jdbcType=DECIMAL},
+      CHSOFTI_INF_PT = #{chsoftiInfPt,jdbcType=DECIMAL},
+      CHSOFTI_INF_AD = #{chsoftiInfAd,jdbcType=DECIMAL},
+      CHSOFTI_INF_TRAVEL = #{chsoftiInfTravel,jdbcType=DECIMAL},
+      CHSOFTI_INF_EQUIPMENT = #{chsoftiInfEquipment,jdbcType=DECIMAL},
+      CHSOFTI_INF_SUB = #{chsoftiInfSub,jdbcType=DECIMAL},
+      CHSOFTI_INF_TOTAL = #{chsoftiInfTotal,jdbcType=DECIMAL},
+      CHSOFTI_INF_CURRENT = #{chsoftiInfCurrent,jdbcType=DECIMAL},
+      CHSOFTI_EFFECTIVE_NR = #{chsoftiEffectiveNr,jdbcType=DECIMAL},
+      CHSOFTI_EFFECTIVE_ST = #{chsoftiEffectiveSt,jdbcType=DECIMAL},
+      CHSOFTI_INVALID_ST = #{chsoftiInvalidSt,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
