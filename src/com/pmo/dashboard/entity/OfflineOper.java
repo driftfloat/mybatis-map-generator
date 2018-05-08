@@ -66,6 +66,8 @@ public class OfflineOper {
 
     private BigDecimal chsoftiInvalidSt;
 
+    private BigDecimal chsoftiInfRmbtotal;
+
     private String remark;
 
     public String getId() {
@@ -73,7 +75,7 @@ public class OfflineOper {
     }
 
     public void setId(String id) {
-        this.id = id == null ? null : id.trim();
+        this.id = id;
     }
 
     public String geteHr() {
@@ -81,7 +83,7 @@ public class OfflineOper {
     }
 
     public void seteHr(String eHr) {
-        this.eHr = eHr == null ? null : eHr.trim();
+        this.eHr = eHr;
     }
 
     public String getStaffName() {
@@ -89,7 +91,7 @@ public class OfflineOper {
     }
 
     public void setStaffName(String staffName) {
-        this.staffName = staffName == null ? null : staffName.trim();
+        this.staffName = staffName;
     }
 
     public String getEmployeeId() {
@@ -97,7 +99,7 @@ public class OfflineOper {
     }
 
     public void setEmployeeId(String employeeId) {
-        this.employeeId = employeeId == null ? null : employeeId.trim();
+        this.employeeId = employeeId;
     }
 
     public Date getCreateDate() {
@@ -121,7 +123,7 @@ public class OfflineOper {
     }
 
     public void setCsSubdeptId(String csSubdeptId) {
-        this.csSubdeptId = csSubdeptId == null ? null : csSubdeptId.trim();
+        this.csSubdeptId = csSubdeptId;
     }
 
     public String getRmId() {
@@ -129,7 +131,7 @@ public class OfflineOper {
     }
 
     public void setRmId(String rmId) {
-        this.rmId = rmId == null ? null : rmId.trim();
+        this.rmId = rmId;
     }
 
     public String getRmName() {
@@ -137,7 +139,7 @@ public class OfflineOper {
     }
 
     public void setRmName(String rmName) {
-        this.rmName = rmName == null ? null : rmName.trim();
+        this.rmName = rmName;
     }
 
     public String getOperatorId() {
@@ -145,7 +147,7 @@ public class OfflineOper {
     }
 
     public void setOperatorId(String operatorId) {
-        this.operatorId = operatorId == null ? null : operatorId.trim();
+        this.operatorId = operatorId;
     }
 
     public String getMonth() {
@@ -153,7 +155,7 @@ public class OfflineOper {
     }
 
     public void setMonth(String month) {
-        this.month = month == null ? null : month.trim();
+        this.month = month;
     }
 
     public String getYear() {
@@ -161,7 +163,7 @@ public class OfflineOper {
     }
 
     public void setYear(String year) {
-        this.year = year == null ? null : year.trim();
+        this.year = year;
     }
 
     public BigDecimal getChsoftiMskHours() {
@@ -316,11 +318,19 @@ public class OfflineOper {
         this.chsoftiInvalidSt = chsoftiInvalidSt;
     }
 
+    public BigDecimal getChsoftiInfRmbtotal() {
+        return chsoftiInfRmbtotal;
+    }
+
+    public void setChsoftiInfRmbtotal(BigDecimal chsoftiInfRmbtotal) {
+        this.chsoftiInfRmbtotal = chsoftiInfRmbtotal;
+    }
+
     public String getRemark() {
         return remark;
     }
 
     public void setRemark(String remark) {
-        this.remark = remark == null ? null : remark.trim();
+        this.remark = remark;
     }
 }

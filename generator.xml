@@ -18,7 +18,7 @@
 		<!-- 生成模型的包名和位置 -->
 		<javaModelGenerator targetPackage="com.pmo.dashboard.entity" targetProject="D:\edit\github\mybatis-map-generator\src">
 			<property name="enableSubPackages" value="true" />
-			<property name="trimStrings" value="true" />
+			<property name="trimStrings" value="false" />
 		</javaModelGenerator>
 		<!-- 生成的映射文件包名和位置 -->
 		<sqlMapGenerator targetPackage="mappers" targetProject="D:\edit\github\mybatis-map-generator\src">
@@ -30,10 +30,10 @@
 		</javaClientGenerator>
 		<!-- 要生成那些表(更改tableName和domainObjectName就可以) -->
 		<table tableName="t_offline_oper" domainObjectName="OfflineOper" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" />
-		<table tableName="t_china_workhour" domainObjectName="ChinaWorkHour" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" />
-		<table tableName="t_hk_workhour" domainObjectName="HKWorkHour" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" />
-		<table tableName="t_ml_workhour" domainObjectName="MLWorkHour" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" />
-		<table tableName="t_currency" domainObjectName="Currency" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" />
+<!-- 		<table tableName="t_china_workhour" domainObjectName="ChinaWorkHour" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" /> -->
+<!-- 		<table tableName="t_hk_workhour" domainObjectName="HKWorkHour" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" /> -->
+<!-- 		<table tableName="t_ml_workhour" domainObjectName="MLWorkHour" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" /> -->
+<!-- 		<table tableName="t_currency" domainObjectName="Currencys" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" /> -->
 		
 <!-- 		<table tableName="t_employee" domainObjectName="Employee" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" /> -->
 		
